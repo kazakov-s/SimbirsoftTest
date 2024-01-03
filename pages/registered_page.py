@@ -1,8 +1,9 @@
 from selenium.webdriver.common.by import By
 from data import fib_number
+from pathlib import Path
 from pages.base_page import BasePage
 from time import sleep
-
+import allure
 
 class RegisteredPage(BasePage):
 
@@ -43,3 +44,7 @@ class RegisteredPage(BasePage):
         self.find(self.TRANSACTIONS_BUTTON).click()
         assert self.find(self.CREDIT), 'Ошибка зачисления'
         assert self.find(self.DEBIT), 'Ошибка списания'
+
+    def allure_attachment(self):
+        filepath = Path('report/out.csv')
+        allure.attach.file(filepath, attachment_type=allure.attachment_type.CSV)
