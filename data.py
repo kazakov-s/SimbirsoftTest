@@ -1,7 +1,6 @@
 import datetime
 import configparser
 
-
 config = configparser.ConfigParser()
 config.read('data.ini')
 
@@ -22,6 +21,7 @@ def fibonacci(n):
         for _ in range(2, n):
             a, b = b, a + b
         return b
+
 
 current_day = datetime.date.today().day
 n = current_day + 1
